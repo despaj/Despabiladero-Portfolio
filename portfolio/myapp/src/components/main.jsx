@@ -305,10 +305,6 @@ function Section({ id, file, label, alt, children }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  HOME                                                               */
-/* ------------------------------------------------------------------ */
-
 function HomeSection({ onNavigate }) {
   return (
     <section id="home" className="hero">
@@ -341,7 +337,11 @@ function HomeSection({ onNavigate }) {
         <div className="hero-frame" aria-hidden="true">
           <div className="hero-tab">profile.png</div>
           <div className="hero-avatar">
-            <span>{NAME.charAt(0)}</span>
+            <img
+              src="/profile.jpg"
+              alt="Janelle Despabiladero"
+              className="hero-photo"
+            />
           </div>
           <div className="hero-frame-footer">
             <span className="hero-frame-dot" />
@@ -353,10 +353,6 @@ function HomeSection({ onNavigate }) {
     </section>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  ABOUT                                                              */
-/* ------------------------------------------------------------------ */
 
 function AboutSection() {
   return (
@@ -734,7 +730,7 @@ const CSS = `
 .fn-rail {
   display: flex;
   gap: 4px;
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
   overflow-x: auto;
   scrollbar-width: none;
@@ -744,7 +740,7 @@ const CSS = `
 .fn-shelf {
   height: 2px;
   background: var(--border);
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 .fn-tab {
@@ -752,7 +748,7 @@ const CSS = `
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-bottom: none;
@@ -781,10 +777,6 @@ const CSS = `
   white-space: nowrap;
 }
 .fn-tab.is-active .fn-tab-file { display: inline; color: var(--accent); }
-
-@media (min-width: 780px) {
-  .fn-tab-file { display: inline; }
-}
 
 /* ---------- Layout helpers ---------- */
 .h2 {
@@ -928,14 +920,24 @@ const CSS = `
   color: var(--text-faint);
 }
 .hero-avatar {
+  position: relative;
   aspect-ratio: 1;
   border-radius: 8px;
-  background: radial-gradient(circle at 30% 20%, var(--accent-soft), var(--panel-raised) 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
   border: 1px solid var(--border-soft);
+  background: var(--panel-raised);
 }
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
 .hero-avatar span {
   font-family: var(--font-display);
   font-size: 5rem;
